@@ -1,13 +1,32 @@
-const express = require('express');             //익스프레스 모듈 가져오기 
-const app = express();
-const cors = require('cors');                   //cors를 사용하고 싶다
-const bodyParser = require('body-parser');      //body-parser을 사용하고 싶다
-const port =5000;                               //서버포트는 5000번 포트
-const route = require('./index.js');        //router가 있는 곳이다 만들 index.js다
-app.use(bodyParser.json());
+const cheerio = require('cheerio');
+const request = require('request');
+const axios = require('axios')
 
-app.use(cors());
-app.use('/', route);
-app.listen(port, ()=>{
-    console.log(`express is running on http://localhost:${port}`);   //익스프레스 연결 확인
+const APIKEY = "dfGEh0ZxCmcCs9D3T70URlxTe77aM%2FAVq%2F47cZb2gRko%2BxANXozELIoiMtAp92ANXucyBoEzbHvcMOYSXzzgDw%3D%3D"
+let datalist;
+
+
+const dataget = axios({
+  method : 'get',
+  url : 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson', 
+    params: {
+      serviceKey: decodeURIComponent(APIKEY),
+      pageNo: 1,
+      numOfRows: 10,
+      startCreateDt: 20210910,
+      endCreateDt: 20210911
+    }
+}).then(r => {
+  console.log(r.data.response.body.items);
+
+   const $ = cheerio.load(r.data.response.body.items, {xmlMode : true});
+
+     $('item >').each((idx) => {
+      let no1 = $('item >').find('accDefRate').text();
+      let no2 = $('item >').find('accExamCnt').text();
+
+      console.log(`console ${no1} / ${no2}`);
+  })
 })
+
+
