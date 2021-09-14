@@ -1,0 +1,3 @@
+  res.sendFile(__dirname+"/public") 이렇게 미들웨어 만들어주고
+  링크/index.html
+  이런식으로하면 접근가능함.
