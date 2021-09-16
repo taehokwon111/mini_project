@@ -1,34 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APITEST</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav>
-        <ul class="nav_title">
-            <li>확진환자</li>
-            <li>격리해제</li>
-            <li>치료중</li>
-            <li>사망자</li>
-        </ul>
-        <ul class="nav_content">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </nav>
-    <div>
-        <button onclick="">TEST</button>
-    </div>
-</body>
-<script type="text/javascript">
-   const parser = require('xml2json-light'); 
+const parser = require('xml2json-light'); 
 const axios = require('axios')
+
 app.use(express.static(__dirname+"/public"));
 
 let a, b, c, d;
@@ -60,5 +32,3 @@ setTimeout(() => {
   console.log(`${a}, ${b}, ${c}, ${d}`);
 
 }, 1000);
-</script>
-</html>
