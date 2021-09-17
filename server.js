@@ -5,7 +5,10 @@ const parser = require('xml2json-light');
 const request = require('request');
 const cheerio = require('cheerio');
 const axios = require('axios')
-app.set(express.static(__dirname+"/public"));
+app.set(express.static(__dirname+"/public/.style.css"));
+app.use(express.static(__dirname+"/public/.style.css"));
+
+app.use('/static', express.static('public'));
 
 
 app.get("/",(req,res)=>{
@@ -43,18 +46,19 @@ app.get("/",(req,res)=>{
 			test3 : c,
 			test4 : d
 		}
-	//   console.log(`${a}, ${b}, ${c}, ${d}`);
-		 console.log(data_list);
-
-		res.send(data_list.test1);
+	  console.log(`${data_list.test1}, ${data_list.test2}, ${data_list.test3}, ${data_list.test4}`);
+		//  console.log(data_list);
+		// res.send(data_list);
+		// res.send(data_list.test1, data_list.test2, data_list.test3, data_list.test4);
 	res.sendFile(__dirname+"/public/index.html");
-	}, 3000);
+	}, 500);
 	
 
 });
 
-
 app.listen(port,(err)=>{
 	if(err) return console.log(err);
 	console.log("The server is listening on port http://localhost:3000/");
+	console.log(express.static('public'))
+
 });

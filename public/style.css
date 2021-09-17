@@ -6,3 +6,4 @@ ul{display: flex; justify-content: space-between; }
 .nav_content{height: 2em; font-weight: bold; font-size: 25px;}
 li{text-align: center; width: 20%;}
 a{text-decoration: none; color: black;}
+h1{color: red;}
