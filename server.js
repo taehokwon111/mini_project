@@ -7,7 +7,7 @@ const cheerio = require('cheerio');
 const axios = require('axios')
 app.set(express.static(__dirname+"/public/.style.css"));
 app.use(express.static(__dirname+"/public/.style.css"));
-app.use('/static', express.static('public'));
+app.use(express.static(__dirname+"/public"));
 
 
 app.get("/",(req,res)=>{
