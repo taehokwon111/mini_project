@@ -30,22 +30,22 @@ app.get("/", async (req, res) => {
     }
 
 
-    // const result = await new Promise((resolve, reject) => {
-    // 	data_gettodaze.then(r => {
+    const result = await new Promise((resolve, reject) => {
+    	data_gettodaze.then(r => {
 
-    // 		let json = parser.xml2json("<eds>test?</eds?>");
-    // 		console.log(json);
-
-
-    // 	  a = JSON.stringify(r.data.response.body.items.item.decideCnt);
-    // 	  b = JSON.stringify(r.data.response.body.items.item.clearCnt);
-    // 	  c = JSON.stringify(r.data.response.body.items.item.deathCnt);
-    // 	  d = JSON.stringify(r.data.response.body.items.item.examCnt);
+    		let json = parser.xml2json("<eds>test?</eds?>");
+    		console.log(json);
 
 
-    // 	});
+    	  a = JSON.stringify(r.data.response.body.items.item.decideCnt);
+    	  b = JSON.stringify(r.data.response.body.items.item.clearCnt);
+    	  c = JSON.stringify(r.data.response.body.items.item.deathCnt);
+    	  d = JSON.stringify(r.data.response.body.items.item.examCnt);
 
-    // });
+
+    	});
+
+    });
 
 
     // setTimeout(() => {
@@ -61,6 +61,8 @@ app.get("/", async (req, res) => {
     // 	// res.send(data_list.test1, data_list.test2, data_list.test3, data_list.test4);
     // res.sendFile(__dirname+"/public/index.html");
     // }, 500);
+
+    res.render(result)
 
 });
 app.listen(port, (err) => {
